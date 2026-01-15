@@ -1,0 +1,315 @@
+/**
+ * Balizas V16 - Estilos principales
+ * Aplicación web para visualización de balizas V16 en España
+ */
+
+/* ========================================
+   Reset y estilos base
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ========================================
+   Mapa
+   ======================================== */
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   Panel de información
+   ======================================== */
+#info-panel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    max-width: 300px;
+}
+
+#info-panel h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#status {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+#beacon-count {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 10px 0;
+}
+
+#last-update {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+#next-update {
+    font-size: 12px;
+    color: #3498db;
+    font-weight: 500;
+}
+
+/* ========================================
+   Estados de carga
+   ======================================== */
+.loading {
+    color: #3498db;
+}
+
+.error {
+    color: #e74c3c;
+}
+
+.success {
+    color: #27ae60;
+}
+
+/* ========================================
+   Botón de ajustes
+   ======================================== */
+.settings-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.settings-btn:hover {
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.settings-btn:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+/* ========================================
+   Panel de configuración
+   ======================================== */
+.settings-panel {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 999;
+    min-width: 280px;
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.settings-panel.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.settings-panel h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+}
+
+/* ========================================
+   Items de configuración
+   ======================================== */
+.setting-item {
+    margin-bottom: 15px;
+}
+
+.setting-item:last-child {
+    margin-bottom: 0;
+}
+
+.setting-item > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* ========================================
+   Botones de selección
+   ======================================== */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 8px;
+}
+
+/* Botones base */
+.map-btn,
+.lang-btn {
+    border: 2px solid #ddd;
+    background: white;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* Botones de mapa (cuadrados) */
+.map-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+/* Botones de idioma (rectangulares) */
+.lang-btn {
+    min-width: 50px;
+    height: 45px;
+    border-radius: 8px;
+    padding: 5px 15px;
+}
+
+/* Estado activo */
+.map-btn.active,
+.lang-btn.active {
+    background: #3498db;
+    border-color: #3498db;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.4);
+}
+
+/* Estado inactivo */
+.map-btn:not(.active),
+.lang-btn:not(.active) {
+    opacity: 0.5;
+}
+
+/* Hover effect */
+.map-btn:hover,
+.lang-btn:hover {
+    transform: scale(1.05);
+    border-color: #3498db;
+}
+
+.map-btn:not(.active):hover,
+.lang-btn:not(.active):hover {
+    opacity: 0.8;
+}
+
+/* Active click effect */
+.map-btn:active,
+.lang-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========================================
+   Responsive - Tablets y móviles
+   ======================================== */
+@media (max-width: 768px) {
+    #info-panel {
+        top: auto;
+        bottom: 80px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        padding: 12px;
+    }
+
+    #info-panel h2 {
+        font-size: 16px;
+    }
+
+    #beacon-count {
+        font-size: 20px;
+        margin: 8px 0;
+    }
+
+    #status,
+    #last-update,
+    #next-update {
+        font-size: 11px;
+    }
+
+    .settings-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+
+    .settings-panel {
+        bottom: 70px;
+        right: 15px;
+        min-width: 260px;
+        padding: 15px;
+    }
+
+    .settings-panel h3 {
+        font-size: 16px;
+    }
+
+    .setting-item > label {
+        font-size: 13px;
+    }
+
+    .map-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+
+    .lang-btn {
+        min-width: 45px;
+        height: 40px;
+        font-size: 22px;
+        padding: 5px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    #info-panel {
+        padding: 10px;
+    }
+
+    #info-panel h2 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    #beacon-count {
+        font-size: 18px;
+    }
+}

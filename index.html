@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visor en tiempo real de balizas V16 activas en España - Datos oficiales DGT">
+    <meta name="keywords" content="balizas V16, DGT, tráfico, España, mapa">
+    <meta name="author" content="Balizas V16">
+    <title>Balizas V16 - DGT España</title>
+
+    <!-- OpenLayers CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
+
+    <!-- Estilos de la aplicación -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+    <!-- Contenedor del mapa -->
+    <div id="map"></div>
+
+    <!-- Botón de ajustes -->
+    <button id="settings-button" class="settings-btn" title="Ajustes">
+        ⚙️
+    </button>
+
+    <!-- Panel de configuración -->
+    <div id="settings-panel" class="settings-panel hidden">
+        <h3 data-i18n="settings">Ajustes</h3>
+
+        <!-- Botones de capa -->
+        <div class="setting-item">
+            <label data-i18n="mapView">Vista del mapa</label>
+            <div class="button-group">
+                <button id="btn-map-osm" class="map-btn active" title="Mapa" data-layer="osm">🗺️</button>
+                <button id="btn-map-satellite" class="map-btn" title="Satélite" data-layer="satellite">🛰️</button>
+            </div>
+        </div>
+
+        <!-- Botones de idioma -->
+        <div class="setting-item">
+            <label data-i18n="language">Idioma</label>
+            <div class="button-group">
+                <button id="btn-lang-es" class="lang-btn active" title="Español" data-lang="es">🇪🇸</button>
+                <button id="btn-lang-en" class="lang-btn" title="English" data-lang="en">🇬🇧</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel de información -->
+    <div id="info-panel">
+        <h2 data-i18n="activeBeacons">Balizas V16 Activas</h2>
+        <div id="status" class="loading" data-i18n="loading">Cargando datos...</div>
+        <div id="beacon-count">0</div>
+        <div id="last-update"><span data-i18n="lastUpdate">Última actualización</span>: <span id="last-update-time">--</span></div>
+        <div id="next-update"><span data-i18n="nextUpdate">Próxima actualización en</span>: <span id="next-update-time">--</span></div>
+    </div>
+
+    <!-- OpenLayers JS -->
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+
+    <!-- Scripts de la aplicación -->
+    <script src="./assets/js/i18n.js"></script>
+    <script src="./assets/js/dgt-api.js"></script>
+    <script src="./assets/js/map.js"></script>
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
