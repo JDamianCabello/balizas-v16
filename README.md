@@ -4,10 +4,12 @@ Aplicación web que muestra en un mapa interactivo todas las balizas V16 activas
 
 ## Demo en Vivo
 
-Una vez desplegado en GitHub Pages, la aplicación estará disponible en:
+La aplicación está disponible en:
 ```
 https://jdamiancabello.github.io/balizas-v16
 ```
+
+**Repositorio**: [https://github.com/JDamianCabello/balizas-v16](https://github.com/JDamianCabello/balizas-v16)
 
 ## Características
 
